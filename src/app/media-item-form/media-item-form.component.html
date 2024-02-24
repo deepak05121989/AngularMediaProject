@@ -39,6 +39,14 @@
         {{yearErrors.year.max}}
       </div>
     </li>
+    <li>
+      <label for="watchedOn">watchedOn</label>
+      <input type="date" name="watchedOn" id="watchedOn" formControlName="watchedOn">
+      <div *ngIf="form.get('watchedOn').error" class="error">
+        Invlid date
+      </div>
+    </li>
+    
   </ul>
   <button type="submit" [disabled]="!form.valid">Save</button>
 </form>

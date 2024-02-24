@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { lookupListToken ,lookupLists } from './provider';
 
 import { MockXHRBackend } from './mock-xhr-backend';
+import { routing } from './app.routing';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +23,14 @@ import { MockXHRBackend } from './mock-xhr-backend';
     MediaListItemComponent,
     FavrioteDirective,
     CategoryListPipe,
-    MediaItemFormComponent
+    MediaItemFormComponent,
   ],
   imports: [
     BrowserModule,
     //FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    routing
   ],
   providers: [
   //  MediaItemService
