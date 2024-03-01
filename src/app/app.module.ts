@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 //import { MediaItemService } from './services/media-item.service';
 import { lookupListToken ,lookupLists } from './provider';
 
-import { MockXHRBackend } from './mock-xhr-backend';
+//import { MockXHRBackend } from './mock-xhr-backend';
 import { routing } from './app.routing';
 
 
@@ -36,7 +36,7 @@ import { routing } from './app.routing';
   //  MediaItemService
   // { provide: 'lookupListToken', useValue: lookupLists }
   { provide: lookupListToken, useValue: lookupLists } ,
-  { provide: HttpXhrBackend, useClass: MockXHRBackend }
+ // { provide: HttpXhrBackend, useClass: MockXHRBackend }
   
   ],
   bootstrap: [AppComponent]

@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MediaItemService {
-    
+    url:string="https://localhost:7178/api/MediaItem/"
   	constructor(private http: HttpClient) {} 
 
+
+    // getDataFromServer() {
+    //   return this.http.get<any>(this.url);
+    // }
+
     get(medium:string) {
-      const getOptions = {
-        params: { medium }
-      };
-      return this.http.get<MediaItemsResponse>('mediaitems', getOptions)
+      return this.http.get<MediaItemsResponse>(this.url+medium)
         .pipe(
           map((response: MediaItemsResponse) => {
+            //console.log(response);
+            response.mediaItems=JSON.parse(JSON.stringify(response));
             return response.mediaItems;
           }),
         catchError(this.handleError)
@@ -25,14 +29,14 @@ export class MediaItemService {
 
   
     add(mediaItem: MediaItem) {
-      return this.http.post('mediaitems', mediaItem)
+      return this.http.post(this.url, mediaItem)
       .pipe(
         catchError(this.handleError)
       );
     }
   
     delete(mediaItem: MediaItem) {
-      return this.http.delete(`mediaitems/${mediaItem.id}`)
+      return this.http.delete(`${this.url}/${mediaItem.id}`)
       .pipe(
         catchError(this.handleError)
       );

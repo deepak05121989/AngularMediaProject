@@ -13,7 +13,7 @@ export class MediaListItemComponent implements OnInit {
   constructor(
     private mediaItemService: MediaItemService,
     private activatedRoute: ActivatedRoute) {}
-
+   // data:any=this.mediaItemService.getDepartmentList().subscribe();
   ngOnInit() {
     this.activatedRoute.paramMap
       .subscribe(paramMap => {
@@ -23,6 +23,7 @@ export class MediaListItemComponent implements OnInit {
         }
         this.getMediaItems(medium);
       });
+     // console.log(this.data);
   }
 
 
@@ -38,6 +39,9 @@ export class MediaListItemComponent implements OnInit {
       .subscribe(mediaItems => {
         this.mediaItemsList = mediaItems;
       });
+      console.log(this.mediaItemsList);
   }
+   
+   
 
 }
